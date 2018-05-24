@@ -1,0 +1,16 @@
+<div class="dialog">
+  <div class="dialog-overlay" [ngClass]="{'show': transition}"></div>
+  <div class="dialog-wrapper" [ngClass]="{'show': transition}">
+    <a class="dialog-close" (click)="closeDialog()">
+      <i class="dialog-close__icon"></i>
+    </a>
+    <app-comment
+      *ngIf="!submitted"
+      [id]="id"
+      [score]="score"
+      (submit)="submitScore()"></app-comment>
+    <app-success 
+      *ngIf="submitted"
+      (close)="closeDialog()"></app-success>
+  </div>
+</div>

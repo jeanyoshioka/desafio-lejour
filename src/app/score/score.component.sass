@@ -1,0 +1,93 @@
+@import "../../assets/sass/mixins"
+$colors: #bb7973, #d48983, #e49f98, #f5bbb5, #f4d2cf, #f5f8c1, #d8f5f1, #a9e5df, #9cd7d1, #83c1ba, #27887d
+
+.score
+  background-color: #e6f7f6
+  display: flex
+  justify-content: center
+  padding: 24px
+  width: 100%
+
+  &-title
+    color: rgba(#000000,.54)
+    font-size: 16px
+    padding: 0 12px
+    text-align: center
+    @include breakpoint(tablet)
+      font-size: 18px
+
+  &-inputs
+    justify-content: center
+    display: flex
+    padding: 12px 0 14px
+
+  &-input
+    align-items: center
+    cursor: pointer
+    display: flex
+    height: 28px
+    justify-content: center
+    margin: 0
+    position: relative
+    width: 28px
+    @include breakpoint(tablet)
+      height: 32px
+      width: 32px
+
+    &__decoration
+      background: #f3fbfb
+      border-radius: 50%
+      height: 28px
+      left: 50%
+      margin: -14px
+      opacity: 0
+      position: absolute
+      top: 50%
+      width: 28px
+      transition: opacity .3s
+
+      .score-input:hover &,
+      .score-input.is-selected &
+        opacity: 1
+
+    &__radio
+      background: #e6f7f6
+      border-radius: 50%
+      border: 1px solid #9d9f9f
+      box-sizing: border-box
+      height: 14px
+      position: relative
+      width: 14px
+      transition: transform .3s
+
+      .score-input:hover &
+        transform: scale(1.2)
+
+      .score-input.is-selected &
+        transform: scale(1.4)
+
+      @for $i from 1 through length($colors)
+        .score-input:nth-child(#{$i}):hover &,
+        .score-input:nth-child(#{$i}).is-selected &
+          background: nth($colors, $i)
+
+    &__text
+      bottom: -16px
+      color: rgba(#000000,.54)
+      font-size: 12px
+      position: absolute
+      white-space: nowrap
+
+      &.is-first
+        left: 0
+
+      &.is-last
+        right: 0
+
+      @include breakpoint(tablet)
+        transform: translateX(-50%)
+        &.is-first
+          left: 50%
+        &.is-last
+          left: 50%
+          right: inherit

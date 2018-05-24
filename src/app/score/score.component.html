@@ -1,0 +1,16 @@
+<div class="score">
+  <div class="score-wrapper">
+    <h1 class="score-title">Qual a probabilidade de você recomendar o Lejour para outra pessoa?</h1>
+    <ul class="score-inputs">
+      <li *ngFor="let score of scores; first as isFirst; last as isLast"
+        (click)="setScore(score)"
+        class="score-input"
+        [ngClass]="{'is-selected': selectedScore === score}">
+        <i class="score-input__decoration"></i>
+        <i class="score-input__radio"></i>
+        <span class="score-input__text is-first" *ngIf="isFirst">Não recomendaria</span>
+        <span class="score-input__text is-last" *ngIf="isLast">Recomendaria com certeza!</span>
+      </li>
+    </ul>
+  </div>
+</div>

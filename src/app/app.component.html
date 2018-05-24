@@ -1,0 +1,21 @@
+<main class="container">
+  <section class="content">
+    <app-score 
+      *ngIf="!submitted && !loading"
+      class="score-container" 
+      (choose)="onChoose($event)"></app-score>
+    <app-dialog 
+      *ngIf="id && !loading"
+      [id]="id"
+      [score]="score"
+      (close)="onClose()"
+      (submit)="onSubmitted()"
+      class="dialog-container"></app-dialog>
+    <app-submitted 
+      *ngIf="submitted && !loading"
+      class="submitted-container"></app-submitted>
+    <app-loading 
+      *ngIf="loading"
+      class="loading-container"></app-loading>
+  </section>
+</main>

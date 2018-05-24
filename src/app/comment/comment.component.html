@@ -1,0 +1,27 @@
+<div class="comment">
+  <div class="comment__title">
+    <h1 class="comment__title-text">Você nos deu nota {{score}}!</h1>
+    <i class="comment__title-emoticon"
+      [ngClass]="getEmoji(score)"></i>
+  </div>
+  <p class="comment__subtitle">
+    Dica? Reclamação? Só um obrigado?<br>
+    Pode escrever aqui pra gente!
+  </p>
+  <div class="comment-form">
+    <div class="comment-form__textarea">
+      <textarea #commentary 
+        placeholder="Seu comentário" 
+        (input)="onKey(commentary.value)"
+        [disabled]="sending"
+        scrollheight></textarea>
+      <i class="comment-form__textarea-decoration"></i>
+      <span class="comment-form__textarea-hint">{{comment.length}} de 140 caracteres</span>
+    </div>
+    <button 
+      class="comment-form__button lejour__button" 
+      [disabled]="sending || (comment.length == 0 || comment.length > 140)" 
+      type="button"
+      (click)="onSubmit()">Enviar comentário</button>
+  </div>
+</div>

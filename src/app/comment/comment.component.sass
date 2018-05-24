@@ -1,0 +1,137 @@
+@import "../../assets/sass/mixins"
+
+.comment
+  padding-top: 70px
+  @include breakpoint(tablet)
+    padding-top: 100px
+  
+  &__title
+    align-items: center
+    background: linear-gradient(#e3655c, #f29d94)
+    border-radius: 8px
+    box-shadow: 0 3px 5px -1px rgba(#000000,.1),0 6px 10px 0 rgba(#000000,.07),0 1px 18px 0 rgba(#000000,.06)
+    display: flex
+    flex-direction: column
+    height: 130px
+    justify-content: center
+    left: 40px
+    position: absolute
+    right: 40px
+    top: -41px
+    @include breakpoint(tablet)
+      height: 160px
+      left: 80px
+      right: 80px
+
+    &-text
+      color: #ffffff
+      font-family: 'Merriweather', serif
+      font-size: 18px
+      @include breakpoint(tablet)
+        font-size: 26px
+
+    &-emoticon
+      background-image: url('/assets/images/sprite-emojis-small.png')
+      border-radius: 50%
+      height: 30px
+      margin-top: 20px
+      width: 30px
+      &.very-happy
+        background-position: 0 0
+      &.happy
+        background-position: -30px 0
+      &.neutral
+        background-position: -60px 0
+      &.angry
+        background-position: -90px 0
+      &.very-angry
+        background-position: -120px 0
+
+      @include breakpoint(tablet)
+        background-image: url('/assets/images/sprite-emojis.png')
+        height: 50px
+        width: 50px
+        &.very-happy
+          background-position: 0 0
+        &.happy
+          background-position: -50px 0
+        &.neutral
+          background-position: -100px 0
+        &.angry
+          background-position: -150px 0
+        &.very-angry
+          background-position: -200px 0
+
+  &__subtitle
+    font-size: 14px
+    line-height: 22px
+    text-align: center
+
+  &-form
+    align-items: center
+    display: flex
+    flex: 1
+    flex-direction: column
+    justify-content: space-between
+    height: 196px
+    margin-top: 40px
+
+    &__textarea
+      display: block
+      position: relative
+      max-width: 380px
+      width: 100%
+
+      &:before,
+      &-decoration
+        background-color: rgba(#000000,.12)
+        bottom: -1px
+        content: ''
+        height: 1.5px
+        left: 0
+        position: absolute
+        width: 100%
+
+      &-decoration
+        background-color: #f5bbb5
+        width: 0%
+        transition: width .3s
+
+        textarea:focus + &
+          width: 100%
+
+      &-hint
+        bottom: -22px
+        color: rgba(#000000,.54)
+        font-size: 11px
+        right: 0
+        position: absolute
+
+      textarea
+        background: transparent
+        border: 0 solid transparent
+        border-bottom-width: 12px
+        border-top-width: 12px 
+        color: rgba(#000000,.87)
+        display: block
+        font-family: 'Lato', serif
+        font-size: 16px
+        height: 22px
+        line-height: 22px
+        margin: 0
+        max-height: 88px
+        outline: none
+        padding: 0
+        resize: none
+        width: 100%
+
+        &:disabled
+          background: transparent
+          color: rgba(#000000,.4)
+
+    &__button
+      width: 210px
+
+textarea
+  @include placeholder
+    color: rgba(#000000,.3)
